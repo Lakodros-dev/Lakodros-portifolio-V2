@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/src/assets/avatar.png"
+      id="favicon"
+    />
+    <script>
+      // Create round favicon
+      function createRoundFavicon() {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+
+        canvas.width = 32;
+        canvas.height = 32;
+
+        img.onload = function () {
+          // Create circular clipping path
+          ctx.beginPath();
+          ctx.arc(16, 16, 16, 0, 2 * Math.PI);
+          ctx.clip();
+
+          // Draw image
+          ctx.drawImage(img, 0, 0, 32, 32);
+
+          // Update favicon
+          const favicon = document.getElementById("favicon");
+          favicon.href = canvas.toDataURL("image/png");
+        };
+
+        img.src = "/src/assets/avatar.png";
+      }
+
+      // Run when page loads
+      window.addEventListener("load", createRoundFavicon);
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <title>Portfolio - Lakodros</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@400;700&family=Rajdhani:wght@400;700&family=Russo+One&family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
