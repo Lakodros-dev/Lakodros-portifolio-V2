@@ -1,4 +1,5 @@
 import './AnimatedRing.css'
+import './AnimatedRing.css'
 
 const AnimatedRing = ({ className = "" }) => {
   return (
